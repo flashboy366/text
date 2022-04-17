@@ -1,0 +1,23 @@
+.profileData {
+
+}
+
+.profileData img {
+    height: 15em;
+
+    border-width: 2px;
+    border-style: solid;
+}
+
+.profileData h2 {
+    text-align: center;
+}
+
+.avatarAndDesc {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.description {
+    margin-left: 20px;
+}

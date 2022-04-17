@@ -1,0 +1,42 @@
+.postArea {
+
+}
+
+.postArea h2 {
+    text-align: center;
+}
+
+.uploadButton {
+    border-style: solid;
+    border-color: black;
+
+    background-color: black;
+    color: white;
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    padding: 4px;
+
+    border-radius: 3px;
+}
+
+.uploadButton:active {
+    background-color: white;
+    color: black;
+}
+
+.posts {
+    margin-top: 1.5em;
+}
+
+.postArea textarea {
+    border-width: 2px;
+    border-color: black;
+    border-style: dashed;
+
+    resize: none;
+
+    padding: 5px;
+}

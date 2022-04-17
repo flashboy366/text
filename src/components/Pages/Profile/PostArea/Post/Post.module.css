@@ -1,0 +1,81 @@
+.post {
+    padding: 0.6em 10px 0.6em 10px;
+
+    margin-bottom: 10px;
+
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 1fr 30px;
+    grid-template-areas:
+            'avatar text'
+            'bp bp';
+}
+
+.post:hover {
+    background-color: #ececec;
+    border-radius: 10px;
+}
+
+.avatar {
+    grid-area: avatar;
+}
+
+.text {
+    grid-area: text;
+
+    display: grid;
+    align-items: center;
+
+    padding-left: 10px;
+}
+
+.buttonPanel {
+    grid-area: bp;
+}
+
+.post img {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+
+.buttonPanel {
+    padding-top: 4px;
+}
+
+.likes {
+    margin-right: 0;
+    margin-left: auto;
+
+    text-align: right;
+}
+
+.likeCount {
+    font-size: 1.2em;
+
+    margin-right: 3px;
+}
+
+.likeButton {
+    background-color: black;
+    color: white;
+
+    font-size: 18px;
+
+    height: 30px;
+    width: 30px;
+
+    border-radius: 50%;
+    border-style: solid;
+    border-color: black;
+
+}
+
+.likeButton:active {
+    background-color: white;
+    color: black;
+}

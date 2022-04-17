@@ -1,0 +1,10 @@
+.footer {
+    grid-area: footer;
+    margin-top: 20em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.footer a {
+    color: black;
+}
