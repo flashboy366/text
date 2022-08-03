@@ -40,3 +40,8 @@
 
     padding: 5px;
 }
+
+.postArea textarea:focus {
+    border-style: solid;
+    outline: none;
+}

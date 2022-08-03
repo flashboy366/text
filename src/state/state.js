@@ -1,3 +1,4 @@
+// Subscriber-observer pattern functionality for rerendering app page
 let renderTree = () => { }
 
 export const subscribe = (observer) => {
@@ -100,7 +101,9 @@ let state = {
 }
 
 
+// Store text input in new post or new message areas
 export let typeInput = (text, category) => {
+    // Filter out and ignore new line inputs
     if (text.slice(-1) !== '\n') {
         (category === 'post')
             ? state.profileData.postData.inputBox = text
@@ -109,6 +112,7 @@ export let typeInput = (text, category) => {
     renderTree(state)
 }
 
+// Store new post to state
 export let addPost = () => {
 
     let posts = state.profileData.postData.posts
@@ -126,6 +130,7 @@ export let addPost = () => {
     }
 }
 
+// Add like to post
 export let addLike = (postId) => {
 
     let previousLikes = state.profileData.postData.posts[postId].likes
@@ -136,6 +141,7 @@ export let addLike = (postId) => {
     console.log(state.profileData.postData.posts[postId])
 }
 
+// Store new message to state
 export let addMessage = (dialogId) => {
 
     let dialogs = state.messagesData.dialogsData.dialogs
@@ -143,6 +149,7 @@ export let addMessage = (dialogId) => {
     let newMessageId =
         Number(dialogData.content[dialogData.content.length - 1].id) + 1
 
+    // Ignore empty message sends
     if (state.messagesData.dialogsData.inputBox !== '') {
         let newMessage = {
             id: `${newMessageId}`,
@@ -157,10 +164,11 @@ export let addMessage = (dialogId) => {
     }
 }
 
+// New message addition flag for scrolling to last message
 export let setNewMessageAdded = (flag) => {
     state.messagesData.dialogsData.newMessageAdded = flag
 }
-
+// First dialog load flag for scrolling to last message
 export let firstDialogLoadSet = (flag) => {
     state.messagesData.dialogsData.firstDialogLoad = flag
 }

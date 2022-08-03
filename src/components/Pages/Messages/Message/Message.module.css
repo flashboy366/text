@@ -3,7 +3,7 @@
 
     display: grid;
 
-    grid-template-columns: 50px 1fr 50px;
+    grid-template-columns: 50px 570px 50px;
     grid-template-areas: 'la text ra';
 
     margin-bottom: 10px;
@@ -18,13 +18,13 @@
 .message .text {
     grid-area: text;
 
-    overflowWrap: "break-word";
-
     display: grid;
     align-items: center;
 
     padding-left: 10px;
     padding-right: 10px;
+
+    word-break: break-all;
 }
 
 .message .leftAvatar {

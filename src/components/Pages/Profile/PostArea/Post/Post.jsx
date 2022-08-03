@@ -8,12 +8,15 @@ const Post = (props) => {
 
     return (
         <div className={cln.post}>
+            {/* Avatar of post author */}
             <div className={cln.avatar}>
                 <img src={props.avatar}></img>
             </div>
+            {/* Post contents */}
             <div className={cln.text}>
                 {props.text}
             </div>
+            {/* Like button and counter */}
             <div className={cln.buttonPanel}>
                 <div className={cln.likes}>
                     <span className={cln.likeCount}>{props.likes}</span>

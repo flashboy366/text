@@ -6,11 +6,14 @@ import {createRef, useEffect} from "react";
 
 const Messages = (props) => {
 
+    // Read opened dialog id from url, if there is one open
     let dialogOpen = props.dialogId !== undefined
 
+    // Read contact name of open dialog and generate string for render
     let activeContact = (dialogOpen) ?
         (': ' + props.messagesData.contacts[props.dialogId].name) : ''
 
+    // Generate contact components list
     let contactEls = props.messagesData.contacts
         .map(c => <Contact
             name={c.name}
@@ -19,7 +22,7 @@ const Messages = (props) => {
             firstDialogLoadSet={props.firstDialogLoadSet}
         />)
 
-
+    // Generate message components list
     let messageEls = (dialogOpen) ?
         props.messagesData.dialogsData.dialogs[props.dialogId].content
             .map(m => <Message
@@ -33,27 +36,32 @@ const Messages = (props) => {
 
 
 
+    // Handle new message input and store it to state
     let typeArea = createRef()
     let type = () => {
         let text = typeArea.current.value;
         props.typeInput(text, 'message')
     }
 
+    // Add new sent message to state
     let addMessage = () => props.addMessage(props.dialogId)
+    // Handle enter keypress for sending new message
     let handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             addMessage()
         }
     }
 
+    // Scrolling to last message functionality
     let messagesEnd = createRef()
     let scrollToEnd = () => messagesEnd.current.scrollIntoView()
 
     useEffect(() => {
         if (dialogOpen) {
+            // Scroll to last message if it`s first dialog load, or in case
+            // of new message
             let newMessageAdded = props.messagesData.dialogsData.newMessageAdded
             let firstDialogLoad = props.messagesData.dialogsData.firstDialogLoad
-
             if (newMessageAdded || firstDialogLoad) {
                 scrollToEnd()
                 props.setNewMessageAdded(false)
@@ -66,19 +74,24 @@ const Messages = (props) => {
 
     return (
         <div className={cln.messagesPage}>
+            {/* Header */}
             <h2>Messages{activeContact}</h2>
             <div className={cln.messageBrowser}>
+                {/* Contact list */}
                 <div className={cln.contacts}>
                     <hr></hr>
                     {contactEls}
                 </div>
+                {/* Dialog section */}
                 {(dialogOpen) ?
                     <div className={cln.dialogs}>
                         <hr></hr>
+                        {/* Message components */}
                         <div className={cln.messagesView}>
                             {messageEls}
                             <div ref={messagesEnd}></div>
                         </div>
+                        {/* New message input area */}
                         <div className={cln.inputArea}>
                             <div>
                             <textarea

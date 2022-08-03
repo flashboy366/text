@@ -81,6 +81,11 @@
     width: 663px;
 }
 
+.inputArea textarea:focus {
+    border-style: solid;
+    outline: none;
+}
+
 .dialogs textarea {
     border-width: 2px;
     border-color: black;

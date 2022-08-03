@@ -5,6 +5,7 @@ import {createRef} from "react";
 
 const PostArea = (props) => {
 
+    // Generate post components list
     let postEls = props.profileData.postData.posts.slice(0).reverse()
         .map(p => <Post
             text={p.text}
@@ -14,19 +15,23 @@ const PostArea = (props) => {
         />)
 
 
+    // Handle new post input and store it to state
     let typeArea = createRef()
     let type = () => {
         let text = typeArea.current.value
         props.typeInput(text, 'post')
     }
 
+    // Add new post to state
     let addPost = () => props.addPost()
+    // Handle adding new post with Enter keypress
     let handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             addPost()
         }
     }
 
+    // Handle button click for adding new post
     let handleUploadClick = () => props.addPost()
 
 
@@ -39,6 +44,7 @@ const PostArea = (props) => {
                 <h4>
                     New post
                 </h4>
+                {/* New post input area */}
                 <div>
                     <textarea
                         ref={typeArea}
@@ -50,6 +56,7 @@ const PostArea = (props) => {
                         onKeyPress={(e) => handleKeyPress(e)}
                     > </textarea>
                 </div>
+                {/* Button for adding new post */}
                 <div>
                     <button
                         className={cln.uploadButton}
@@ -57,6 +64,7 @@ const PostArea = (props) => {
                     >Upload</button>
                 </div>
             </div>
+            {/* Post components */}
             <div className={cln.posts}>
                 {postEls}
             </div>

@@ -27,6 +27,9 @@
     align-items: center;
 
     padding-left: 10px;
+    padding-right: 1px;
+
+    word-break: break-all;
 }
 
 .buttonPanel {
