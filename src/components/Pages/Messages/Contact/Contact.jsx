@@ -15,7 +15,7 @@ const Contact = (props) => {
             with chosen contact */}
             <div className={
                 cln.contactLink + ' '
-                + (props.openDialogId === props.id ?
+                + (props.openDialogID === props.id ?
                     cln.open : cln.closed)
             }>
                 <NavLink

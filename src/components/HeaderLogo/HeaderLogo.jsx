@@ -5,7 +5,7 @@ const HeaderLogo = () => {
     return (
         <header className={cln.logo}>
             <div>
-                <img src='https://cdn.worldvectorlogo.com/logos/text.svg'></img>
+                <img alt='' src='https://cdn.worldvectorlogo.com/logos/text.svg'></img>
             </div>
         </header>
     );

@@ -11,9 +11,7 @@ const Profile = (props) => {
             <hr></hr>
             <PostArea
                 profileData={props.profileData}
-                typeInput={props.typeInput}
-                addPost={props.addPost}
-                addLike={props.addLike}
+                dispatch={props.dispatch}
             />
         </div>
     );

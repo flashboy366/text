@@ -16,15 +16,13 @@ const App = (props) => {
     let messageRoutes =
         props.appState.messagesData.dialogsData.dialogs.map(r => 
             <Route
+                key={r.id}
                 path={'/messages/' + r.id}
                 element={
                     <Messages
                         messagesData={props.appState.messagesData}
-                        addMessage={props.addMessage}
-                        typeInput={props.typeInput}
-                        setNewMessageAdded={props.setNewMessageAdded}
-                        firstDialogLoadSet={props.firstDialogLoadSet}
-                        dialogId={r.id}
+                        dialogID={r.id}
+                        dispatch={props.dispatch}
                     />
                 }
             />
@@ -47,9 +45,7 @@ const App = (props) => {
                             element={
                                 <Profile
                                     profileData={props.appState.profileData}
-                                    typeInput={props.typeInput}
-                                    addPost={props.addPost}
-                                    addLike={props.addLike}
+                                    dispatch={props.dispatch}
                                 />
                             }
                         />
@@ -58,6 +54,7 @@ const App = (props) => {
                             element={
                                 <Messages
                                     messagesData={props.appState.messagesData}
+                                    dispatch={props.dispatch}
                                 />
                             }
                         />

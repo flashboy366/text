@@ -7,7 +7,7 @@ const ProfileData = (props) => {
             <h2>Profile</h2>
             <div className={cln.avatarAndDesc}>
                 <div className={cln.avatar}>
-                    <img src={props.avatarData}></img>
+                    <img alt='' src={props.avatarData}></img>
                 </div>
                 <div className={cln.description}>
                     Description.

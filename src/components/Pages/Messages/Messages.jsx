@@ -3,29 +3,39 @@ import Contact from "./Contact/Contact";
 import Message from "./Message/Message";
 import * as React from "react";
 import {createRef, useEffect} from "react";
+import { addMessageActionCreator, setFirstDialogLoadActionCreator, setNewMessageAddedActionCreator } from '../../../redux/reducers/messagesReducer/messagesReducer';
+import { typeInputActionCreator } from '../../../redux/reducers/profileReducer/profileReducer';
 
 const Messages = (props) => {
 
     // Read opened dialog id from url, if there is one open
-    let dialogOpen = props.dialogId !== undefined
+    let dialogOpen = props.dialogID !== undefined
 
     // Read contact name of open dialog and generate string for render
     let activeContact = (dialogOpen) ?
-        (': ' + props.messagesData.contacts[props.dialogId].name) : ''
+        (': ' + props.messagesData.contacts[props.dialogID].name) : ''
+
+    // setting flag for first load of dialog
+    const firstDialogLoadSet = (flag) => {
+        let action = setFirstDialogLoadActionCreator(flag)
+        props.dispatch(action)
+    }
 
     // Generate contact components list
     let contactEls = props.messagesData.contacts
         .map(c => <Contact
+            key={c.id}
             name={c.name}
             id={c.id}
-            openDialogId={props.dialogId}
-            firstDialogLoadSet={props.firstDialogLoadSet}
+            openDialogID={props.dialogID}
+            firstDialogLoadSet={firstDialogLoadSet}
         />)
 
     // Generate message components list
     let messageEls = (dialogOpen) ?
-        props.messagesData.dialogsData.dialogs[props.dialogId].content
+        props.messagesData.dialogsData.dialogs[props.dialogID].content
             .map(m => <Message
+                key={m.id}
                 text={m.text}
                 id={m.id}
                 origin={m.origin}
@@ -37,14 +47,21 @@ const Messages = (props) => {
 
 
     // Handle new message input and store it to state
+    const typeInput = (text) => {
+        let action = typeInputActionCreator(text, 'message')
+        props.dispatch(action)
+    }
     let typeArea = createRef()
     let type = () => {
         let text = typeArea.current.value;
-        props.typeInput(text, 'message')
+        typeInput(text, 'message')
     }
 
     // Add new sent message to state
-    let addMessage = () => props.addMessage(props.dialogId)
+    let addMessage = () => {
+        let action = addMessageActionCreator(props.dialogID)
+        props.dispatch(action)
+    }
     // Handle enter keypress for sending new message
     let handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -56,6 +73,12 @@ const Messages = (props) => {
     let messagesEnd = createRef()
     let scrollToEnd = () => messagesEnd.current.scrollIntoView()
 
+    // Setting flag for adding new message
+    const setNewMessageAdded = (flag) => {
+        let action = setNewMessageAddedActionCreator(flag)
+        props.dispatch(action)
+    }
+
     useEffect(() => {
         if (dialogOpen) {
             // Scroll to last message if it`s first dialog load, or in case
@@ -64,8 +87,8 @@ const Messages = (props) => {
             let firstDialogLoad = props.messagesData.dialogsData.firstDialogLoad
             if (newMessageAdded || firstDialogLoad) {
                 scrollToEnd()
-                props.setNewMessageAdded(false)
-                props.firstDialogLoadSet(false)
+                setNewMessageAdded(false)
+                firstDialogLoadSet(false)
             }
         }
     })

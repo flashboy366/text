@@ -1,17 +1,20 @@
 import cln from './PostArea.module.css';
 import Post from './Post/Post';
 import {createRef} from "react";
-
+import { typeInputActionCreator, addPostActionCreator }
+    from '../../../../redux/reducers/profileReducer/profileReducer';
 
 const PostArea = (props) => {
 
     // Generate post components list
     let postEls = props.profileData.postData.posts.slice(0).reverse()
         .map(p => <Post
+            key={p.id}
             text={p.text}
-            likes={p.likes} id={p.id}
+            likes={p.likes}
+            id={p.id}
             avatar={props.profileData.avatar}
-            addLike={props.addLike}
+            dispatch={props.dispatch}
         />)
 
 
@@ -19,20 +22,23 @@ const PostArea = (props) => {
     let typeArea = createRef()
     let type = () => {
         let text = typeArea.current.value
-        props.typeInput(text, 'post')
+        let action = typeInputActionCreator(text, 'post')
+        props.dispatch(action)
     }
 
-    // Add new post to state
-    let addPost = () => props.addPost()
     // Handle adding new post with Enter keypress
     let handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            addPost()
+            let action = addPostActionCreator()
+            props.dispatch(action)
         }
     }
 
     // Handle button click for adding new post
-    let handleUploadClick = () => props.addPost()
+    let handleUploadClick = () => {
+        let action = addPostActionCreator()
+        props.dispatch(action)
+    }
 
 
     return (

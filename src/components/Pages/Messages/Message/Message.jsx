@@ -10,7 +10,7 @@ const Message = (props) => {
         }>
             {/* Contact avatar */}
             <div className={cln.leftAvatar}>
-                {props.origin !== 'sent' ? <img src={props.userAvatar}></img> : ''}
+                {props.origin !== 'sent' ? <img alt='' src={props.userAvatar}></img> : ''}
             </div>
             {/* Message contents */}
             <div className={cln.text}>
@@ -18,7 +18,7 @@ const Message = (props) => {
             </div>
             {/* User avatar */}
             <div className={cln.rightAvatar}>
-                {props.origin === 'sent' ? <img src={props.userAvatar}></img> : ''}
+                {props.origin === 'sent' ? <img alt='' src={props.userAvatar}></img> : ''}
             </div>
         </div>
     );

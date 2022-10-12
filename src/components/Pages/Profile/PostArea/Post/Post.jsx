@@ -1,16 +1,20 @@
 import cln from './Post.module.css';
-
+import { addLikeActionCreator }
+    from '../../../../../redux/reducers/profileReducer/profileReducer';
 
 const Post = (props) => {
 
-    let handleLikeClick = () => props.addLike(props.id)
+    let handleLikeClick = () => {
+        let action = addLikeActionCreator(props.id)
+        props.dispatch(action)
+    }
 
 
     return (
         <div className={cln.post}>
             {/* Avatar of post author */}
             <div className={cln.avatar}>
-                <img src={props.avatar}></img>
+                <img alt='' src={props.avatar}></img>
             </div>
             {/* Post contents */}
             <div className={cln.text}>

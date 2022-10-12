@@ -5,7 +5,7 @@ const HeaderBar = () => {
     return (
         <header className={cln.bar}>
             <div >
-                <img src='https://ak.picdn.net/shutterstock/videos/1009328426/thumb/1.jpg'></img>
+                <img alt='' src='https://ak.picdn.net/shutterstock/videos/1009328426/thumb/1.jpg'></img>
             </div>
         </header>
     );

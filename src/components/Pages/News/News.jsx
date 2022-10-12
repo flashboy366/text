@@ -1,4 +1,4 @@
-import cln from './News.module.css'
+// import cln from './News.module.css'
 
 const News = () => {
     return (
