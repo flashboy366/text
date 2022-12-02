@@ -1,4 +1,4 @@
-import cln from './PostArea.module.css';
+import cln from './PostArea.module.scss';
 import Post from './Post/Post';
 import {createRef} from "react";
 import { typeInputActionCreator, addPostActionCreator }
@@ -43,33 +43,26 @@ const PostArea = (props) => {
 
     return (
         <div className={cln.postArea}>
-            <h2>
-                Posts
-            </h2>
-            <div>
-                <h4>
-                    New post
-                </h4>
-                {/* New post input area */}
-                <div>
-                    <textarea
-                        ref={typeArea}
-                        placeholder='Type here...'
-                        cols='50'
-                        rows='5'
-                        onChange={(e) => type(e)}
-                        value={props.profileData.postData.inputBox}
-                        onKeyPress={(e) => handleKeyPress(e)}
-                    > </textarea>
-                </div>
-                {/* Button for adding new post */}
-                <div>
-                    <button
-                        className={cln.uploadButton}
-                        onClick={handleUploadClick}
-                    >Upload</button>
-                </div>
+            <span className={cln.newPostHeader}>
+                New post
+            </span>
+            {/* New post input area */}
+            <div className={cln.inputArea}>
+                <textarea
+                    ref={typeArea}
+                    placeholder='Type here...'
+                    cols='50'
+                    rows='4'
+                    onChange={(e) => type(e)}
+                    value={props.profileData.postData.inputBox}
+                    onKeyPress={(e) => handleKeyPress(e)}
+                > </textarea>
             </div>
+            {/* Button for adding new post */}
+            <button className={cln.uploadButton}
+                onClick={handleUploadClick}
+            >Upload</button>
+            <hr className={cln.horizontalDivider}></hr>
             {/* Post components */}
             <div className={cln.posts}>
                 {postEls}

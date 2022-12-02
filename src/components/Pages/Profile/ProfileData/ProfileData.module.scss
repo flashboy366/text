@@ -1,0 +1,30 @@
+@import '../../../../index.scss';
+
+.profileData {
+    height: 100%;
+    display: grid;
+    grid-template-rows:
+        min-content
+        min-content
+        1fr;
+    gap: $defaultMargin;
+
+    .header {
+        @include headerStyle(big);
+    }
+
+    .avatar {
+        height:fit-content;
+        display: flex;
+        justify-content: center;
+
+        img {
+            height: 15em;
+        }
+    }
+
+    .description {
+        height: 100%;
+        margin-left: $defaultMargin;
+    }
+}

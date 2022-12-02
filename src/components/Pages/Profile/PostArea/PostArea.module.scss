@@ -1,0 +1,120 @@
+@import '../../../../index.scss';
+
+.postArea {
+    box-sizing: border-box;
+    position: relative;
+    height: 100%;
+
+    display: grid;
+    grid-template-areas:
+        'new-post-header'
+        'input-area'
+        'upload-button'
+        'horizontal-divider'
+        'posts';
+    gap: $defaultMargin;
+    grid-template-rows:
+        min-content
+        min-content
+        min-content
+        calc(#{$dividersWidth} * 2)
+        1fr;
+
+    .newPostHeader {
+        grid-area: new-post-header;
+
+        @include headerStyle(small);
+    }
+
+    .inputArea {
+        grid-area: input-area;
+
+        textarea {
+            box-sizing: border-box;
+
+            width: 100%;
+            box-sizing: border-box;
+            border-width: 2px;
+            border-color: $primaryColor;
+            border-style: dashed;
+        
+            resize: none;
+        
+            padding: 5px;
+    
+            &:focus {
+                border-style: solid;
+                outline: none;
+            }
+        }
+    }
+
+    .uploadButton {
+        margin-left: auto;
+
+        grid-area: upload-button;
+
+        box-sizing: border-box;
+
+        width: fit-content;
+
+        border-style: solid;
+        border-color: $primaryColor;
+    
+        background-color: $primaryColor;
+        color: $secondaryColor;
+    
+        padding: 4px;
+    
+        border-radius: 3px;
+
+        &:active {
+            background-color: $secondaryColor;
+            color: $primaryColor;
+        }
+    }
+
+    .horizontalDivider {
+        grid-area: horizontal-divider;
+
+        width: 100%;
+
+        box-sizing: border-box;
+        border-width: calc(#{$dividersWidth} / 2);
+        background-color: $primaryColor;
+        border-color: $primaryColor;
+        border-style: solid;
+    }
+
+    .posts {
+        box-sizing: border-box;
+        grid-area: posts;
+
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: block;
+        overflow-y: auto;
+
+        padding-right: $defaultMargin
+    }
+}
+
+@media (max-width: $breakpointTablet) {
+    .postArea {
+        .posts {
+            height: fit-content;
+        }
+    }
+}
+
+@media (max-width: $breakpointPhone) {
+    .postArea {
+        .uploadButton {
+            $verticalPadding: 10px;
+
+            width: 100%;
+            padding: $verticalPadding 0 $verticalPadding 0;
+        }
+    }
+}

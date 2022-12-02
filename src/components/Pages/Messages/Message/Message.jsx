@@ -1,4 +1,4 @@
-import cln from './Message.module.css'
+import cln from './Message.module.scss'
 
 const Message = (props) => {
 

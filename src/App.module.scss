@@ -1,0 +1,153 @@
+@import './index.scss';
+
+.appMain {
+    margin: 0 auto;
+    display: grid;
+    width: 80vw;
+    height: 100vh;
+
+    grid-template-areas: 
+        "header header"
+        "menu main-content";
+
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: $leftPartWidth 1fr;
+
+    background-color: $secondaryColor;
+
+    .header {
+        grid-area: header;
+    
+        display: grid;
+        grid-template-areas: 'header-logo header-bar';
+    
+        grid-template-columns: $leftPartWidth 1fr;
+
+        .headerBar {
+            grid-area: header-bar;
+        }
+        
+        .headerLogo {
+            grid-area: header-logo;
+        }
+    }
+
+    .menu {
+        grid-area: menu;
+
+        .dropdownButton {
+            display: none;
+        }
+    }
+
+    .mainContent {
+        grid-area: main-content;
+        height: 100%;
+        box-sizing: border-box;
+
+        border: $primaryColor 2px;
+        border-left-style: solid;
+        border-top-style: solid;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: $breakpointTablet) {
+    .appMain {
+        .mainContent {
+            display: block;
+            overflow-y: auto;
+        }
+    }
+}
+
+@media (max-width: $breakpointPhone) {
+    .appMain {
+        width: 100vw;
+
+        grid-template-areas:
+            "header"
+            "menu"
+            "main-content";
+
+        grid-template-columns: 100vw;
+        grid-template-rows: $headerHeight min-content 1fr;
+
+        .menu {
+            $slideAnimationDuration: 0.9s;
+            $fadeAnimationDuration: calc(
+                #{$slideAnimationDuration} / 2.5);
+
+            display: grid;
+
+            height: fit-content;
+            max-height: $dropdownButtonHeight;
+
+            transition: all 3s ease;
+            background-color: $primaryColor;
+
+            .dropdownButton, .sidebar {
+                grid-column: 1;
+                grid-row: 1;
+            }
+        
+            .dropdownButton {
+                height: auto;
+                max-height: $dropdownButtonHeight;
+
+                display: inline-block;
+
+                opacity: 1;
+                z-index: 1;
+            }
+        
+            .sidebar {
+                overflow: hidden;
+
+                opacity: 0;
+                z-index: 0;
+            }
+
+            &[dropdown-open='true'] {
+                @keyframes slideOut {
+                    0% { max-height: $dropdownButtonHeight }
+                    100% { max-height: 30vh }
+                }
+                animation: slideOut $slideAnimationDuration both;
+
+                .dropdownButton {
+                    @keyframes fadeOut {
+                        0% {
+                            opacity: 1;
+                            z-index: 1;
+                            max-height: $dropdownButtonHeight;
+                        }
+                        50% {
+                            opacity: 0;
+                            z-index: 0;
+                            max-height: 30vh
+                        }
+                        100% {
+                            opacity: 0;
+                            z-index: 0;
+                            max-height: 30vh
+                        }
+                    }
+                    animation: fadeOut $fadeAnimationDuration both;
+                }
+                .sidebar {
+                    @keyframes fadeIn {
+                        0% { opacity: 0; z-index: 0 }
+                        50% { opacity: 0; z-index: 0 }
+                        100% { opacity: 1; z-index: 1 }
+                    }
+                    animation: fadeIn $fadeAnimationDuration both;
+                }
+            }
+        }
+
+        .mainContent {
+            border-style: none;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@import '../../../index.scss';
+
+.dropButton {
+    width: 100vw;
+    padding: 0;
+    border: 0;
+
+    .buttonText {
+        height: $dropdownButtonHeight;
+        background-color: $primaryColor;
+        color: $secondaryColor;
+    
+        font-size: 1.5em;
+        line-height: calc(#{$dropdownButtonHeight} * 0.95);
+    }
+}

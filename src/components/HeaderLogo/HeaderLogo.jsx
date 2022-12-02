@@ -1,12 +1,10 @@
-import cln from './HeaderLogo.module.css';
+import cln from './HeaderLogo.module.scss';
 
 
 const HeaderLogo = () => {
     return (
         <header className={cln.logo}>
-            <div>
-                <img alt='' src='https://cdn.worldvectorlogo.com/logos/text.svg'></img>
-            </div>
+            <img alt='' src='https://cdn.worldvectorlogo.com/logos/text.svg'></img>
         </header>
     );
 }

@@ -1,0 +1,32 @@
+@import '../../../index.scss';
+
+.pageButton {
+  box-sizing: border-box;
+
+  background-color: $primaryColor;
+  font-size: 1.2em;
+  padding: 7px;
+
+  margin-bottom: 1px;
+
+
+  a, a:visited {
+    color: $secondaryColor;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $secondaryColor;
+      color: $primaryColor;
+    }
+
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: $breakpointPhone) {
+  .pageButton {
+    text-align: center;
+  }
+}

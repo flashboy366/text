@@ -1,4 +1,4 @@
-import cln from './PageButton.module.css';
+import cln from './PageButton.module.scss';
 import {NavLink} from "react-router-dom";
 
 const PageButton = (props) => {

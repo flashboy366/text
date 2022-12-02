@@ -1,0 +1,46 @@
+$primaryColor: rgb(23, 23, 23);
+$secondaryColor: rgb(245, 245, 245);
+$selectionColor: #ececec;
+
+$leftPartWidth: 120px;
+$headerHeight: 80px;
+
+$defaultMargin: 15px;
+
+$dividersWidth: 1px;
+
+
+@mixin headerStyle($size) {
+  font-style: oblique;
+  font-weight: bold;
+
+  @if $size == big {
+    font-size: xx-large;
+  }
+  @else if $size == small {
+    font-size: larger;
+  }
+}
+
+$dropdownButtonHeight: 40px;
+
+$breakpointPhone: 479px;
+$breakpointTablet: 900px;
+
+
+
+body {
+  margin: 0;
+
+  font-family: monospace;
+  font-size: large;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: $primaryColor;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}

@@ -1,4 +1,4 @@
-import cln from './Messages.module.css'
+import cln from './Messages.module.scss'
 import Contact from "./Contact/Contact";
 import Message from "./Message/Message";
 import * as React from "react";
@@ -98,7 +98,7 @@ const Messages = (props) => {
     return (
         <div className={cln.messagesPage}>
             {/* Header */}
-            <h2>Messages{activeContact}</h2>
+            <span className={cln.header}>Messages{activeContact}</span>
             <div className={cln.messageBrowser}>
                 {/* Contact list */}
                 <div className={cln.contacts}>
@@ -116,7 +116,6 @@ const Messages = (props) => {
                         </div>
                         {/* New message input area */}
                         <div className={cln.inputArea}>
-                            <div>
                             <textarea
                                 ref={typeArea}
                                 placeholder='Type here...'
@@ -125,14 +124,10 @@ const Messages = (props) => {
                                 value={props.messagesData.dialogsData.inputBox}
                                 onKeyPress={(e) => handleKeyPress(e)}
                             > </textarea>
-                            </div>
-                            <div>
-                                <button
-                                    onClick={addMessage}
-                                    className={cln.sendButton}
-                                >Send
-                                </button>
-                            </div>
+                            <button
+                                onClick={addMessage}
+                                className={cln.sendButton}
+                            >Send</button>
                         </div>
                     </div> :
                     <></>

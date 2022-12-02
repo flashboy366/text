@@ -1,0 +1,11 @@
+@import '../../index.scss';
+
+.bar {
+    img {
+        width: 100%;
+        height: $headerHeight;
+    
+        object-fit: cover;
+        object-position: 50% 66%;
+    }
+}

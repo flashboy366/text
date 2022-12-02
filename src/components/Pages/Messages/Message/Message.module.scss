@@ -1,0 +1,57 @@
+@import '../../../../index.scss';
+
+.message {
+    box-sizing: border-box;
+    
+    padding: 7px;
+
+    display: grid;
+
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-areas: 'la text ra';
+
+    margin-bottom: $defaultMargin;
+    margin-right: $defaultMargin;
+
+    &:hover {
+        background-color: $selectionColor;
+        border-radius: 10px;
+    }
+
+    &.sent {
+        text-align: right;
+    }
+
+    .leftAvatar {
+        grid-area: la;
+    }
+
+    .text {
+        box-sizing: border-box;
+
+        grid-area: text;
+    
+        display: grid;
+        align-items: center;
+    
+        padding-left: 10px;
+        padding-right: 10px;
+    
+        word-break: break-all;
+    }
+
+    .rightAvatar {
+        grid-area: ra;
+    }
+
+    img {
+        height: 50px;
+        width: 50px;
+    
+        border-radius: 50%;
+        object-fit: cover;
+    
+        display: grid;
+        align-items: center;
+    }
+}

@@ -1,0 +1,9 @@
+@import '../../index.scss';
+
+.logo {
+    img {
+        width: $leftPartWidth;
+        height: $headerHeight;
+        object-fit: cover;
+    }
+}

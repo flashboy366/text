@@ -1,4 +1,4 @@
-import cln from './Post.module.css';
+import cln from './Post.module.scss';
 import { addLikeActionCreator }
     from '../../../../../redux/reducers/profileReducer/profileReducer';
 

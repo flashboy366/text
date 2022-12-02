@@ -1,0 +1,59 @@
+@import '../../../index.scss';
+
+$profileMargin: 15px;
+
+.profile {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template: 'profile-data post-area';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2.5fr;
+    gap: $defaultMargin;
+    box-sizing: border-box;
+    padding: $defaultMargin $defaultMargin 0 $defaultMargin;
+
+    .profileData {
+        box-sizing: border-box;
+        grid-area: profile-data;
+        height: 100%;
+    }
+
+    .postArea {
+        grid-area: post-area;
+        height: 100%;
+    }
+
+    .horizontalDivider {
+        display: none;
+    }
+}
+
+@media (max-width: $breakpointTablet) {
+    .profile {
+        grid-template:
+            'profile-data'
+            'horizontal-divider'
+            'post-area';
+
+        grid-template-rows:
+            min-content
+            calc(#{$dividersWidth} * 2)
+            1fr;
+
+        .horizontalDivider {
+            grid-area: 'horizontal-divider';
+
+            display: inline;
+
+            background-color: $primaryColor;
+            border-color: $primaryColor;
+            border-style: solid;
+
+            width: 100%;
+
+            // margin: $defaultMargin;
+            // margin-bottom: 0;
+        }
+    }
+}

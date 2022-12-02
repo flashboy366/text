@@ -1,4 +1,4 @@
-import cln from './Contact.module.css'
+import cln from './Contact.module.scss'
 import {NavLink} from "react-router-dom";
 
 const Contact = (props) => {

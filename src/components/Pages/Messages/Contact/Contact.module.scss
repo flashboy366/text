@@ -1,0 +1,45 @@
+@import '../../../../index.scss';
+
+.contactButton {
+    @include headerStyle(small);
+
+    .contactLink {
+        &.open {
+            background-color: $primaryColor;
+
+            a {
+                color: $secondaryColor;
+            }
+        }
+
+        a, a:visited {
+            text-decoration: none;
+            color: $primaryColor;
+
+            &:hover {
+                background-color: $primaryColor;
+                color: $secondaryColor;
+            }
+        }
+    }
+
+    hr {
+        box-sizing: border-box;
+
+        border-width: $dividersWidth;
+        background-color: $primaryColor;
+        border-color: $primaryColor;
+        border-style: solid;
+    
+        margin-left: 7px;
+        margin-right: 7px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
+}
+
+@media (max-width: $breakpointPhone) {
+    .contactButton {
+        text-align: center;
+    }
+}

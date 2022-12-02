@@ -1,12 +1,10 @@
-import cln from './HeaderBar.module.css';
+import cln from './HeaderBar.module.scss';
 
 
 const HeaderBar = () => {
     return (
         <header className={cln.bar}>
-            <div >
-                <img alt='' src='https://ak.picdn.net/shutterstock/videos/1009328426/thumb/1.jpg'></img>
-            </div>
+            <img alt='' src='https://static.vecteezy.com/system/resources/previews/002/431/892/original/black-and-white-abstract-marble-texture-monochrome-abstract-background-illustration-vector.jpg'></img>
         </header>
     );
 }
